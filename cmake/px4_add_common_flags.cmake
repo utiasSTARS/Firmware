@@ -156,6 +156,7 @@ function(px4_add_common_flags)
 		-fno-exceptions
 		-fno-rtti
 		-fno-threadsafe-statics
+		-fno-sized-deallocation
 
 		-Wreorder
 
