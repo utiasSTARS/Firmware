@@ -179,24 +179,23 @@
 
 #define MPU9250_DEFAULT_ONCHIP_FILTER_FREQ	92
 
-#pragma pack(push, 1)
-/**
- * Report conversation within the mpu, including command byte and
- * interrupt status.
- */
 struct MPUReport {
-	uint8_t		cmd;
-	uint8_t		status;
-	uint8_t		accel_x[2];
-	uint8_t		accel_y[2];
-	uint8_t		accel_z[2];
-	uint8_t		temp[2];
-	uint8_t		gyro_x[2];
-	uint8_t		gyro_y[2];
-	uint8_t		gyro_z[2];
-	struct ak8963_regs mag;
+	uint8_t cmd;
+	uint8_t ACCEL_XOUT_H;
+	uint8_t ACCEL_XOUT_L;
+	uint8_t ACCEL_YOUT_H;
+	uint8_t ACCEL_YOUT_L;
+	uint8_t ACCEL_ZOUT_H;
+	uint8_t ACCEL_ZOUT_L;
+	uint8_t TEMP_OUT_H;
+	uint8_t TEMP_OUT_L;
+	uint8_t GYRO_XOUT_H;
+	uint8_t GYRO_XOUT_L;
+	uint8_t GYRO_YOUT_H;
+	uint8_t GYRO_YOUT_L;
+	uint8_t GYRO_ZOUT_H;
+	uint8_t GYRO_ZOUT_L;
 };
-#pragma pack(pop)
 
 /*
   The MPU9250 can only handle high bus speeds on the sensor and
@@ -253,6 +252,8 @@ private:
 	PX4Gyroscope		_px4_gyro;
 
 	MPU9250_mag		_mag;
+
+	hrt_abstime		_last_mag_update{0};
 
 	unsigned		_call_interval{1000};
 
