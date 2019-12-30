@@ -32,6 +32,7 @@
 ############################################################################
 
 # check if px4 source is a git repo
+set(PX4_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../..)
 if (EXISTS ${PX4_SOURCE_DIR}/.git)
 	if (IS_DIRECTORY ${PX4_SOURCE_DIR}/.git)
 		# standard git repo
